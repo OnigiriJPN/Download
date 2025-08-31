@@ -1,5 +1,5 @@
 // クリック関数
-function onSubmit(token) {
+async function onSubmit(token) {
     window.reportError = function(errorMessage, errorObj = null) {
         // ユーザー向けアラート
         alert("エラーが発生しました: " + errorMessage);
