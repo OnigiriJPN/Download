@@ -1,9 +1,12 @@
 let ut = navigator.userAgent;
+let DldBtn = document.getElementById("DldBtn");
 
 if(ut.indexOf('iPhone') > 0 || ut.indexOf('iPod') > 0 || ut.indexOf('Android') > 0 && ut.indexOf('Mobile') > 0){
-	msg = "SmartPhon";
+	DldBtn.disabled = true;
+	alert("モバイルでは、ダウンロード出来ません。");
 }else if(ut.indexOf('iPad') > 0 || ut.indexOf('Android') > 0){
-	msg ="Tablet";
+	DldBtn.disabled = true;
+	alert("モバイルでは、ダウンロード出来ません。");
 }else{
-	msg = "Personal Computer";
+	DldBtn.disabled = false;
 }
