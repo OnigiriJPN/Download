@@ -5,18 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="9JKzMbzHDRo5hRO-eeOqwCC9Z-sVJo6CLlX99Z6JIoM" />
     <title>ダウンロードしてくれてありがとうございます！</title>
+    <style>
+        #Progrs {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <h1>ダウンロードしていただきありがとうございます！</h1>
-    <progress max="100" value="0"></progress>
+    <progress max="100" value="0" id="Progrs"></progress>
     <p>ダウンロードが自動で開始されない場合は<a href="#" onclick="Click()">ここをクリック</a>してください。</p>
     
     <script type="text/javascript">
+        const Progrs = document.getElementById("Progrs");
         function Click(){
             const a = document.createElement("a");
-            a.href = "https://example.com/sample.zip"; // そのままURL
-            a.download = "sample.zip"; // 保存される名前
+            a.href = "https://onigiriapps1.netlify.app/Assets/ApplicationFiles.zip"; // そのままURL
+            a.download = "ApplicationFiles.zip"; // 保存される名前
             a.click();
+        }
+        window.ononline = () => {
+            setInterval(()=>{
+                try{
+                    Progrs.value += 1;
+                    if(Progrs.value === 100){
+                        clearInterval();
+                        const a = document.createElement("a");
+                        a.href = "https://onigiriapps1.netlify.app/Assets/ApplicationFiles.zip"; // そのままURL
+                        a.download = "ApplicationFiles.zip"; // 保存される名前
+                        a.click();
+                    }
+                }catch(err){
+                    alert(`Sorry.
+                        downloadingError.
+                        Reason: ${err}`);
+                    throw new Error(err);
+                }
+            },100)
+        }
+        window.onoffline = () => {
+            alert(`Sorry.
+                downloadingError.
+                Reason: internet offline. Please Connect internet or WI-FI.`);
+            return;
         }
     </script>
 </body>
