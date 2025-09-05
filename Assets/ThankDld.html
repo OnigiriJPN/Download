@@ -13,7 +13,10 @@
     
     <script type="text/javascript">
         function Click(){
-            
+            const a = document.createElement("a");
+            a.href = "https://example.com/sample.zip"; // そのままURL
+            a.download = "sample.zip"; // 保存される名前
+            a.click();
         }
     </script>
 </body>
